@@ -1,3 +1,4 @@
+ FirstEdit
 [Skyrim opens with an Imperial wagon driving four prisoners down a snowy
 mountain pass. All are seated and bound; the one dressed in finery is gagged.]
 
