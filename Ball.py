@@ -1,50 +1,61 @@
 import time
 
-width = 80
-height = 23
-leng = width * height
+#desen_sayac = 0 # hangi desen basılacak, her desen aynı sırada basılacağı bilgisi kullanılarak
 
-dikey_hareket = -160 # dikey hareket miktar
-yatay_hareket = 2 #yatay hareket miktarı
-sutun = 40 # 2 ile 78 arası
-satir = 2 # 2 ile 22 arası
-sutun_sayac = 2 # sütun takip hızı
-satir_sayac = -2 # satır takip hızı
-desen_sayac = 0 # hangi desen basılacak, her desen aynı sırada basılacağı bilgisi kullanılarak
-columns =[39,40,41,120,199,201]
-pattern = "\\O/|/\\"
+class sayac:
+    desen=0
+    def __init__(self):
+        self.desen = 0
+    def __setattr__(self,desen,girdi):
+        super().__setattr__(desen,girdi)
+    def __call__(self):
+         return desen
+d_sayac=sayac()
+def desen(d_sayac):
+    pattern = "\\O/|/\\"
 
-def desen():
-    global desensayac
-    desen_sayac = ( desen_sayac + 1)  % len(pattern)
-
-    return [desen_sayac - 1]
+    d_sayac.__setattr__('desen',( d_sayac.desen + 1)  % len(pattern))
 
 
-def main():
+    return pattern[d_sayac.desen - 1]
+
+
+def main(d_sayac):
+    width = 80
+    height = 23
+    leng = width * height
+    #d_sayac=sayac()
+    dikey_hareket = -160 # dikey hareket miktar
+    yatay_hareket = 2 # yatay hareket miktarı
+    sutun = 40 # 2 ile 78 arası
+    satir = 2 # 2 ile 22 arası
+    sutun_sayac = 2 # sütun takip hızı
+    satir_sayac = -2 # satır takip hızı
+    columns = [39,40,41,120,199,201]
+
     while 1:
 
-        Matrix = [desen() if x in columns else ' ' for x in range(leng)]
+        Matrix = [desen(d_sayac) if x in columns else ' ' for x in range(leng)]
         print("".join(Matrix))
 
         gecici=columns
-        if(satır<=2):
+        if(satir<=2):
             dikey_hareket*=(-1)
             satir_sayac*=(-1)
-        if(satır>=22):
+        if(satir>=22):
             dikey_hareket*=(-1)
             satir_sayac*=(-1)
-        if(sütun<=2):
+        if(sutun<=2):
             yatay_hareket*=(-1)
             sutun_sayac*=(-1)
-        if(sütun>=76):
+        if(sutun>=76):
             yatay_hareket*=(-1)
             sutun_sayac*=(-1)
-        sütun+=sütunsayac
-        satır+=satırsayac
-        columns = [x+dikeyhareket+yatayhareket for x in gecici]
+        sutun+=sutun_sayac
+        satir+=satir_sayac
+        columns = [x+dikey_hareket+yatay_hareket for x in gecici]
         time.sleep(0.09)
 
 
 if __name__=='__main__':
-    main()
+    main(d_sayac)
