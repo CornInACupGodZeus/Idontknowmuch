@@ -4,21 +4,21 @@ width = 80
 height = 23
 leng = width * height
 
-dikeyhareket = -160 # dikey hareket miktar
-yatayhareket = 2;#yatay hareket miktarı
-sütun=40;#2ile78 arası
-satır=2;#2ile22 arası
-sütunsayac=2;#sütun takip hızı
-satırsayac=-2;#satır takip hızı
-desensayac=0;# hangi desen basılacak, her desen aynı sırada basılacağı bilgisi kullanılarak
-columns=[39,40,41,120,199,201]
+dikey_hareket = -160 # dikey hareket miktar
+yatay_hareket = 2 #yatay hareket miktarı
+sutun = 40 # 2 ile 78 arası
+satir = 2 # 2 ile 22 arası
+sutun_sayac = 2 # sütun takip hızı
+satir_sayac = -2 # satır takip hızı
+desen_sayac = 0 # hangi desen basılacak, her desen aynı sırada basılacağı bilgisi kullanılarak
+columns =[39,40,41,120,199,201]
 pattern = "\\O/|/\\"
 
 def desen():
     global desensayac
-    desensayac = ( desensayac + 1)  % len(pattern)
+    desen_sayac = ( desen_sayac + 1)  % len(pattern)
 
-    return [desensayac - 1]
+    return [desen_sayac - 1]
 
 
 def main():
@@ -29,17 +29,17 @@ def main():
 
         gecici=columns
         if(satır<=2):
-            dikeyhareket*=(-1)
-            satırsayac*=(-1)
+            dikey_hareket*=(-1)
+            satir_sayac*=(-1)
         if(satır>=22):
-            dikeyhareket*=(-1)
-            satırsayac*=(-1)
+            dikey_hareket*=(-1)
+            satir_sayac*=(-1)
         if(sütun<=2):
-            yatayhareket*=(-1)
-            sütunsayac*=(-1)
+            yatay_hareket*=(-1)
+            sutun_sayac*=(-1)
         if(sütun>=76):
-            yatayhareket*=(-1)
-            sütunsayac*=(-1)
+            yatay_hareket*=(-1)
+            sutun_sayac*=(-1)
         sütun+=sütunsayac
         satır+=satırsayac
         columns = [x+dikeyhareket+yatayhareket for x in gecici]
