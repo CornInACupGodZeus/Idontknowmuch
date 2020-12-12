@@ -2,7 +2,7 @@ from cx_Freeze import setup, Executable
 
 base = None
 
-executables = [Executable("Ball.py", base=base)]
+executables = [Executable("ScreenSaver.py", base=base)]
 
 packages = ["idna"]
 options = {
